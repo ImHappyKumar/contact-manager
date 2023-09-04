@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import user from '../assets/user.png';
-import { FiTrash2 } from 'react-icons/fi';
+import { FiEdit, FiTrash2 } from 'react-icons/fi';
 
 const ContactCard = (props) => {
     const { id, name, email, number } = props.contact;
@@ -26,7 +26,13 @@ const ContactCard = (props) => {
                 </div>
             </Link>
             <div>
-                <i className='text-danger' style={{ fontSize: '20px' }} onClick={() => getContactId(id)}><FiTrash2 /></i>
+                <Link
+                    to={`/edit/${id}`}
+                    state={props.contact}
+                >
+                    <i className='text-primary mx-1' style={{ fontSize: '20px' }}><FiEdit /></i>
+                </Link>
+                <i className='text-danger mx-1' style={{ fontSize: '20px', cursor: 'pointer' }} onClick={() => getContactId(id)}><FiTrash2 /></i>
             </div>
         </div>
     )
