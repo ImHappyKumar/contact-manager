@@ -8,13 +8,13 @@ const ContactCard = (props) => {
     const getContactId = props.getContactId;
 
     return (
-        <div className='container d-flex justify-content-between'>
+        <div className='row justify-content-between'>
             <Link
                 to={`/contact/${id}`}
                 state={props.contact}
                 style={{ textDecoration: 'none' }}
             >
-                <div className='d-flex'>
+                <div className='d-flex col-12 text-truncate'>
                     <div className='me-2'>
                         <img src={user} alt='user' style={{ width: '50px' }} />
                     </div>
@@ -25,14 +25,14 @@ const ContactCard = (props) => {
                     </div>
                 </div>
             </Link>
-            <div>
+            <div className='col-12 text-end'>
                 <Link
                     to={`/edit/${id}`}
                     state={props.contact}
                 >
-                    <i className='text-primary mx-1' style={{ fontSize: '20px' }}><FiEdit /></i>
+                    <i className='text-primary me-1' style={{ fontSize: '20px' }}><FiEdit /></i>
                 </Link>
-                <i className='text-danger mx-1' style={{ fontSize: '20px', cursor: 'pointer' }} onClick={() => getContactId(id)}><FiTrash2 /></i>
+                <i className='text-danger ms-1' style={{ fontSize: '20px', cursor: 'pointer' }} onClick={() => getContactId(id)}><FiTrash2 /></i>
             </div>
         </div>
     )
