@@ -4,28 +4,30 @@ import user from '../assets/user.png';
 import { FiEdit, FiTrash2 } from 'react-icons/fi';
 
 const ContactCard = (props) => {
-    const { id, name, email, number } = props.contact;
+    const { id, firstName, lastName } = props.contact;
     const getContactId = props.getContactId;
 
     return (
         <div className='row justify-content-between'>
-            <Link
-                to={`/contact/${id}`}
-                state={props.contact}
-                style={{ textDecoration: 'none' }}
-            >
-                <div className='d-flex col-12 text-truncate'>
-                    <div className='me-2'>
-                        <img src={user} alt='user' style={{ width: '50px' }} />
+
+            <div className='col-8'>
+                <Link
+                    to={`/contact/${id}`}
+                    state={props.contact}
+                    style={{ textDecoration: 'none' }}
+                >
+                    <div className='d-flex align-items-center text-truncate mx-2'>
+                        <div className='me-3'>
+                            <img src={user} alt='user' style={{ width: '40px' }} />
+                        </div>
+                        <div>
+                            <h5 className='text-dark mt-1'>{lastName ? (firstName + " " + lastName) : firstName}</h5>
+                        </div>
                     </div>
-                    <div>
-                        <h5 className='card-title text-dark text-start mb-2'>{name}</h5>
-                        <h6 className='card-subtitle text-body-secondary text-start mb-1'>{email}</h6>
-                        <h6 className='card-subtitle text-body-secondary text-start'>{number}</h6>
-                    </div>
-                </div>
-            </Link>
-            <div className='col-12 text-end'>
+                </Link>
+            </div>
+
+            <div className='col-4 text-end'>
                 <Link
                     to={`/edit/${id}`}
                     state={props.contact}
